@@ -57,6 +57,7 @@ CIM_CsocketDlg::CIM_CsocketDlg(CWnd* pParent /*=NULL*/)
 	, m_pLSocket(NULL)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	//m_pLSocket = NULL;
 }
 
 void CIM_CsocketDlg::DoDataExchange(CDataExchange* pDX)
@@ -207,6 +208,8 @@ void CIM_CsocketDlg::OnButtonListen()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	UpdateData(TRUE);//获得用户输入
+	//创建侦听套接字对象
+	m_pLSocket = new CLSocket(this);
 	//穿件监听套接字的底层套接字，在用户指定的端口上侦听
 	if (!m_pLSocket->Create(m_nPort))
 	{
